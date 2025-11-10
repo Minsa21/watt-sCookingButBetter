@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>📈 Chicken Bhaanda Lal'?</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <style>
+    #crop-rect { border: 2px dashed red; position: absolute; pointer-events: none; }
+    #canvas-container { position: relative; display: inline-block; }
+    #pointCounter { margin-left: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>📈 Watts Cookin'?</h1>
+
+  <div id="top-controls">
+    <input type="file" id="upload" accept="image/*">
+    Mode:
+    <select id="mode">
+      <option>Monthly totals</option>
+      <option>Daily average</option>
+    </select>
+    Start month:
+    <select id="start">
+      <option>Jan</option><option>Feb</option><option>Mar</option><option>Apr</option>
+      <option>May</option><option>Jun</option><option>Jul</option><option>Aug</option>
+      <option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option>
+    </select>
+    <button id="undo">Undo</button>
+    <span id="pointCounter">Red Points: 0/12</span>
+ 
+    <button id="cropToggle">Crop Mode</button>
+<button id="applyCrop" style="display:none;">Apply Crop</button>
+
+    <button id="reset">Reset</button>
+  </div>
+  <button id="helpBtn">Are you lost bbygirl?</button>
+
+<div class="modal" id="helpModal">
+  <div class="modal-content">
+    <h2>How to Use ✨</h2>
+    <ol>
+      <li>Upload an image using the “Choose File” button.</li>
+      <li>Select the Mode based on your graph (Monthly or Daily average).</li>
+      <li>Select the Start month for your data.</li>
+      <li>Click two blue points on the Y-axis (bottom then top).</li>
+      <li>Enter the real Y-min/max values, then press “Set Calibration.”</li>
+      <li>Click twelve red points along the curve (Left→Right always).</li>
+      <li>Made a mistake while selecting the red points? Dw i gotcha, Use Undo button </li>
+      <li>View your monthly kWh and annual total in the Results panel.</li>
+      <li>Hit “Reset” to clear and start over.</li>
+      <li>Switch to “Crop Mode” to crop any area of the image.</li>
+      <li>Click “Apply Crop” to finalize your selection.</li>
+      <li>Enjoy accurate, clean visuals without hassle 😌</li>
+
+    </ol>
+    <button class="close" id="closeModal">Close</button>
+  </div>
+</div>
+
+  <div id="main">
+    <div class="panel">
+      <h2>Results</h2>
+      <table id="results"></table>
+      <h2 id="annual"></h2>
+    </div>
+
+    <div id="center-panel">
+      <div id="canvas-container">
+        <canvas id="c" width="800" height="600"></canvas>
+        <div id="crop-rect" style="display:none;"></div>
+      </div>
+      <div id="controls" style="display:none">
+        Y-min: <input type="number" id="ymin">
+        Y-max: <input type="number" id="ymax">
+        <button id="setCalib">Set Calibration</button>
+      </div>
+    </div>
+
+    
+  </div>
+</body>
+</html>
